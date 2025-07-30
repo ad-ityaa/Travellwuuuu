@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tokyo - Travellwuu</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .destination-hero {
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
+                        url('https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=1200&h=600&fit=crop');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 8rem 0 4rem;
+            text-align: center;
+        }
+        
+        .back-btn {
+            position: absolute;
+            top: 2rem;
+            left: 2rem;
+            background: rgba(255,255,255,0.9);
+            color: #333;
+            padding: 0.75rem 1.5rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .back-btn:hover {
+            background: white;
+            transform: translateY(-2px);
+        }
+        
+        .places-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .place-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .place-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .place-image {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .place-content {
+            padding: 1.5rem;
+        }
+        
+        .place-content h3 {
+            color: #1e293b;
+            margin-bottom: 0.5rem;
+        }
+        
+        .place-content p {
+            color: #64748b;
+            margin-bottom: 1rem;
+        }
+        
+        .place-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.9rem;
+        }
+        
+        .price {
+            color: #10b981;
+            font-weight: 600;
+        }
+        
+        .rating {
+            color: #fbbf24;
+        }
+        
+        .info-section {
+            background: #f8fafc;
+            padding: 3rem 0;
+        }
+        
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .info-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        
+        .info-card i {
+            font-size: 2.5rem;
+            color: #2563eb;
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="destination-hero">
+        <a href="../index.html" class="back-btn">
+            <i class="fas fa-arrow-left"></i> Back to Home
+        </a>
+        <div class="container">
+            <h1>Tokyo</h1>
+            <p>Where tradition meets innovation</p>
+            <div class="hero-stats">
+                <div class="stat">
+                    <i class="fas fa-star"></i>
+                    <span>4.7 Rating</span>
+                </div>
+                <div class="stat">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>Japan</span>
+                </div>
+                <div class="stat">
+                    <i class="fas fa-users"></i>
+                    <span>14M Population</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="container" style="padding: 4rem 0;">
+        <h2>Must-Visit Places in Tokyo</h2>
+        <p>Discover the perfect blend of ancient traditions and cutting-edge technology</p>
+        
+        <div class="places-grid">
+            <div class="place-card">
+                <div class="place-image" style="background-image: url('https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=400&h=300&fit=crop');"></div>
+                <div class="place-content">
+                    <h3>Shibuya Crossing</h3>
+                    <p>World's busiest pedestrian crossing, a symbol of Tokyo's energy and urban life.</p>
+                    <div class="place-meta">
+                        <span class="price">Free</span>
+                        <span class="rating"><i class="fas fa-star"></i> 4.8</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="place-card">
+                <div class="place-image" style="background-image: url('https://images.unsplash.com/photo-1511739001486-6bfe10ce785f?w=400&h=300&fit=crop');"></div>
+                <div class="place-content">
+                    <h3>Senso-ji Temple</h3>
+                    <p>Tokyo's oldest temple with traditional architecture, Nakamise shopping street, and cultural significance.</p>
+                    <div class="place-meta">
+                        <span class="price">Free</span>
+                        <span class="rating"><i class="fas fa-star"></i> 4.9</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="place-card">
+                <div class="place-image" style="background-image: url('https://images.unsplash.com/photo-1541961017774-22349e4a1262?w=400&h=300&fit=crop');"></div>
+                <div class="place-content">
+                    <h3>Tokyo Tower</h3>
+                    <p>Iconic red and white tower offering panoramic views of the city skyline.</p>
+                    <div class="place-meta">
+                        <span class="price">¥3,000</span>
+                        <span class="rating"><i class="fas fa-star"></i> 4.6</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="place-card">
+                <div class="place-image" style="background-image: url('https://images.unsplash.com/photo-1499856871958-5b9627545d1a?w=400&h=300&fit=crop');"></div>
+                <div class="place-content">
+                    <h3>Tsukiji Outer Market</h3>
+                    <p>Famous fish market with fresh seafood, sushi restaurants, and traditional Japanese food stalls.</p>
+                    <div class="place-meta">
+                        <span class="price">Free</span>
+                        <span class="rating"><i class="fas fa-star"></i> 4.7</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="place-card">
+                <div class="place-image" style="background-image: url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=300&fit=crop');"></div>
+                <div class="place-content">
+                    <h3>Harajuku</h3>
+                    <p>Fashion district known for trendy shops, Takeshita Street, and unique street fashion culture.</p>
+                    <div class="place-meta">
+                        <span class="price">Free</span>
+                        <span class="rating"><i class="fas fa-star"></i> 4.5</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="place-card">
+                <div class="place-image" style="background-image: url('https://images.unsplash.com/photo-1511739001486-6bfe10ce785f?w=400&h=300&fit=crop');"></div>
+                <div class="place-content">
+                    <h3>Meiji Shrine</h3>
+                    <p>Peaceful Shinto shrine surrounded by forest, perfect for experiencing traditional Japanese spirituality.</p>
+                    <div class="place-meta">
+                        <span class="price">Free</span>
+                        <span class="rating"><i class="fas fa-star"></i> 4.8</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="place-card">
+                <div class="place-image" style="background-image: url('https://images.unsplash.com/photo-1541961017774-22349e4a1262?w=400&h=300&fit=crop');"></div>
+                <div class="place-content">
+                    <h3>Tokyo Skytree</h3>
+                    <p>Tallest tower in Japan with observation decks offering stunning 360-degree city views.</p>
+                    <div class="place-meta">
+                        <span class="price">¥3,100</span>
+                        <span class="rating"><i class="fas fa-star"></i> 4.7</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="place-card">
+                <div class="place-image" style="background-image: url('https://images.unsplash.com/photo-1499856871958-5b9627545d1a?w=400&h=300&fit=crop');"></div>
+                <div class="place-content">
+                    <h3>Akihabara</h3>
+                    <p>Electronics district with anime shops, gaming centers, and the latest technology gadgets.</p>
+                    <div class="place-meta">
+                        <span class="price">Free</span>
+                        <span class="rating"><i class="fas fa-star"></i> 4.6</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="info-section">
+        <div class="container">
+            <h2>Travel Information</h2>
+            <div class="info-grid">
+                <div class="info-card">
+                    <i class="fas fa-plane"></i>
+                    <h3>Best Time to Visit</h3>
+                    <p>Spring (March-May) for cherry blossoms and Fall (October-November) for pleasant weather and autumn colors.</p>
+                </div>
+                <div class="info-card">
+                    <i class="fas fa-subway"></i>
+                    <h3>Getting Around</h3>
+                    <p>Tokyo Metro and JR lines are efficient. Get a PASMO or Suica card for easy travel. Single ride ¥130-330.</p>
+                </div>
+                <div class="info-card">
+                    <i class="fas fa-bed"></i>
+                    <h3>Where to Stay</h3>
+                    <p>Shibuya for nightlife, Shinjuku for convenience, Asakusa for traditional vibe, Ginza for luxury.</p>
+                </div>
+                <div class="info-card">
+                    <i class="fas fa-utensils"></i>
+                    <h3>Local Cuisine</h3>
+                    <p>Try sushi, ramen, tempura, yakitori, and matcha desserts. Don't miss conveyor belt sushi!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2024 Travellwuu. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html> 

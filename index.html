@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travellwuu - Your Ultimate Tourist Guide</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-globe-americas"></i>
+                <span>Travellwuu</span>
+            </div>
+            <div class="nav-menu">
+                <a href="#home" class="nav-link">Home</a>
+                <a href="#destinations" class="nav-link">Destinations</a>
+                <a href="#map" class="nav-link">Map</a>
+                <a href="#about" class="nav-link">About</a>
+            </div>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Discover Amazing Destinations</h1>
+            <p>Your ultimate guide to exploring the world's most beautiful places</p>
+            <div class="search-container">
+                <input type="text" id="destination-search" placeholder="Search destinations...">
+                <button id="search-btn"><i class="fas fa-search"></i></button>
+            </div>
+        </div>
+        <div class="hero-stats">
+            <div class="stat">
+                <i class="fas fa-map-marker-alt"></i>
+                <span>1000+ Destinations</span>
+            </div>
+            <div class="stat">
+                <i class="fas fa-users"></i>
+                <span>50K+ Travelers</span>
+            </div>
+            <div class="stat">
+                <i class="fas fa-star"></i>
+                <span>4.8 Rating</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <section id="map" class="map-section">
+        <div class="container">
+            <h2>Interactive Travel Map</h2>
+            <p>Explore destinations and plan your journey with real-time information</p>
+            
+            <div class="map-controls">
+                <div class="control-group">
+                    <label for="start-location">Start Location:</label>
+                    <input type="text" id="start-location" placeholder="Enter starting point">
+                </div>
+                <div class="control-group">
+                    <label for="end-location">Destination:</label>
+                    <input type="text" id="end-location" placeholder="Enter destination">
+                </div>
+                <button id="calculate-route" class="btn-primary">
+                    <i class="fas fa-route"></i> Calculate Route
+                </button>
+            </div>
+
+            <div class="route-info" id="route-info" style="display: none;">
+                <div class="info-card">
+                    <h3>Route Information</h3>
+                    <div class="info-grid">
+                        <div class="info-item">
+                            <i class="fas fa-road"></i>
+                            <span>Distance: <span id="distance">-</span></span>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-clock"></i>
+                            <span>ETA: <span id="eta">-</span></span>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-car"></i>
+                            <span>Mode: <span id="travel-mode">-</span></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="map-container"></div>
+        </div>
+    </section>
+
+    <!-- Destinations Section -->
+    <section id="destinations" class="destinations">
+        <div class="container">
+            <h2>Popular Destinations</h2>
+            <p class="section-subtitle">Discover amazing places to visit around the world</p>
+            
+            <!-- USA Destinations -->
+            <div class="country-section">
+                <h3 class="country-title"><i class="fas fa-flag-usa"></i> United States</h3>
+                <div class="destinations-grid">
+                    <div class="destination-card" data-lat="40.7128" data-lng="-74.0060">
+                        <div class="card-image">
+                            <img src="https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?w=400&h=300&fit=crop" alt="New York">
+                            <div class="card-overlay">
+                                <a href="destinations/new-york.html" class="btn-secondary">View Details</a>
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <h3>New York City</h3>
+                            <p>Times Square, Central Park, Statue of Liberty</p>
+                            <div class="card-meta">
+                                <span><i class="fas fa-star"></i> 4.8</span>
+                                <span><i class="fas fa-map-marker-alt"></i> New York, USA</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="destination-card" data-lat="34.0522" data-lng="-118.2437">
+                        <div class="card-image">
+                            <img src="https://images.unsplash.com/photo-1544919973-8ce75fc6c5e5?w=400&h=300&fit=crop" alt="Los Angeles">
+                            <div class="card-overlay">
+                                <button class="btn-secondary">View Details</button>
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <h3>Los Angeles</h3>
+                            <p>Hollywood, Beverly Hills, Santa Monica Pier</p>
+                            <div class="card-meta">
+                                <span><i class="fas fa-star"></i> 4.6</span>
+                                <span><i class="fas fa-map-marker-alt"></i> California, USA</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="destination-card" data-lat="25.7617" data-lng="-80.1918">
+                        <div class="card-image">
+                            <img src="https://images.unsplash.com/photo-1535498730771-e735b998cd64?w=400&h=300&fit=crop" alt="Miami">
+                            <div class="card-overlay">
+                                <button class="btn-secondary">View Details</button>
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <h3>Miami Beach</h3>
+                            <p>South Beach, Art Deco District, Ocean Drive</p>
+                            <div class="card-meta">
+                                <span><i class="fas fa-star"></i> 4.7</span>
+                                <span><i class="fas fa-map-marker-alt"></i> Florida, USA</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="destination-card" data-lat="36.1699" data-lng="-115.1398">
+                        <div class="card-image">
+                            <img src="https://images.unsplash.com/photo-1581350973784-9dbb3b545c88?w=400&h=300&fit=crop" alt="Las Vegas">
+                            <div class="card-overlay">
+                                <button class="btn-secondary">View Details</button>
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <h3>Las Vegas</h3>
+                            <p>The Strip, Fremont Street, Grand Canyon</p>
+                            <div class="card-meta">
+                                <span><i class="fas fa-star"></i> 4.5</span>
+                                <span><i class="fas fa-map-marker-alt"></i> Nevada, USA</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Europe Destinations -->
+            <div class="country-section">
+                <h3 class="country-title"><i class="fas fa-flag"></i> Europe</h3>
+                <div class="destinations-grid">
+                    <div class="destination-card" data-lat="48.8566" data-lng="2.3522">
+                        <div class="card-image">
+                            <img src="https://images.unsplash.com/photo-1502602898534-47d1c0c0b131?w=400&h=300&fit=crop" alt="Paris">
+                            <div class="card-overlay">
+                                <a href="destinations/paris.html" class="btn-secondary">View Details</a>
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <h3>Paris</h3>
+                            <p>Eiffel Tower, Louvre Museum, Notre-Dame</p>
+                            <div class="card-meta">
+                                <span><i class="fas fa-star"></i> 4.9</span>
+                                <span><i class="fas fa-map-marker-alt"></i> France</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="destination-card" data-lat="51.5074" data-lng="-0.1278">
+                        <div class="card-image">
+                            <img src="https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=400&h=300&fit=crop" alt="London">
+                            <div class="card-overlay">
+                                <a href="destinations/london.html" class="btn-secondary">View Details</a>
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <h3>London</h3>
+                            <p>Big Ben, Buckingham Palace, Tower Bridge</p>
+                            <div class="card-meta">
+                                <span><i class="fas fa-star"></i> 4.8</span>
+                                <span><i class="fas fa-map-marker-alt"></i> United Kingdom</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="destination-card" data-lat="41.9028" data-lng="12.4964">
+                        <div class="card-image">
+                            <img src="https://images.unsplash.com/photo-1552832230-c0197dd311b5?w=400&h=300&fit=crop" alt="Rome">
+                            <div class="card-overlay">
+                                <button class="btn-secondary">View Details</button>
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <h3>Rome</h3>
+                            <p>Colosseum, Vatican City, Trevi Fountain</p>
+                            <div class="card-meta">
+                                <span><i class="fas fa-star"></i> 4.9</span>
+                                <span><i class="fas fa-map-marker-alt"></i> Italy</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="destination-card" data-lat="40.4168" data-lng="-3.7038">
+                        <div class="card-image">
+                            <img src="https://images.unsplash.com/photo-1539037116277-4db20889f2d4?w=400&h=300&fit=crop" alt="Madrid">
+                            <div class="card-overlay">
+                                <button class="btn-secondary">View Details</button>
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <h3>Madrid</h3>
+                            <p>Prado Museum, Plaza Mayor, Royal Palace</p>
+                            <div class="card-meta">
+                                <span><i class="fas fa-star"></i> 4.7</span>
+                                <span><i class="fas fa-map-marker-alt"></i> Spain</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="destination-card" data-lat="52.5200" data-lng="13.4050">
+                        <div class="card-image">
+                            <img src="https://images.unsplash.com/photo-1560969184-10fe8719e047?w=400&h=300&fit=crop" alt="Berlin">
+                            <div class="card-overlay">
+                                <button class="btn-secondary">View Details</button>
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <h3>Berlin</h3>
+                            <p>Brandenburg Gate, Berlin Wall, Museum Island</p>
+                            <div class="card-meta">
+                                <span><i class="fas fa-star"></i> 4.6</span>
+                                <span><i class="fas fa-map-marker-alt"></i> Germany</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="destination-card" data-lat="48.2082" data-lng="16.3738">
+                        <div class="card-image">
+                            <img src="https://images.unsplash.com/photo-1516550893923-42d28e5677af?w=400&h=300&fit=crop" alt="Vienna">
+                            <div class="card-overlay">
+                                <button class="btn-secondary">View Details</button>
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <h3>Vienna</h3>
+                            <p>Schönbrunn Palace, St. Stephen's Cathedral</p>
+                            <div class="card-meta">
+                                <span><i class="fas fa-star"></i> 4.8</span>
+                                <span><i class="fas fa-map-marker-alt"></i> Austria</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Asia Destinations -->
+            <div class="country-section">
+                <h3 class="country-title"><i class="fas fa-flag"></i> Asia</h3>
+                <div class="destinations-grid">
+                    <div class="destination-card" data-lat="35.6762" data-lng="139.6503">
+                        <div class="card-image">
+                            <img src="https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=400&h=300&fit=crop" alt="Tokyo">
+                            <div class="card-overlay">
+                                <a href="destinations/tokyo.html" class="btn-secondary">View Details</a>
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <h3>Tokyo</h3>
+                            <p>Shibuya Crossing, Senso-ji Temple, Tokyo Tower</p>
+                            <div class="card-meta">
+                                <span><i class="fas fa-star"></i> 4.7</span>
+                                <span><i class="fas fa-map-marker-alt"></i> Japan</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="destination-card" data-lat="22.3193" data-lng="114.1694">
+                        <div class="card-image">
+                            <img src="https://images.unsplash.com/photo-1536599018102-9f803c140fc1?w=400&h=300&fit=crop" alt="Hong Kong">
+                            <div class="card-overlay">
+                                <button class="btn-secondary">View Details</button>
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <h3>Hong Kong</h3>
+                            <p>Victoria Peak, Tsim Sha Tsui, Lantau Island</p>
+                            <div class="card-meta">
+                                <span><i class="fas fa-star"></i> 4.6</span>
+                                <span><i class="fas fa-map-marker-alt"></i> China</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="destination-card" data-lat="1.3521" data-lng="103.8198">
+                        <div class="card-image">
+                            <img src="https://images.unsplash.com/photo-1525625293386-3f8f99389edd?w=400&h=300&fit=crop" alt="Singapore">
+                            <div class="card-overlay">
+                                <button class="btn-secondary">View Details</button>
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <h3>Singapore</h3>
+                            <p>Marina Bay Sands, Gardens by the Bay, Sentosa</p>
+                            <div class="card-meta">
+                                <span><i class="fas fa-star"></i> 4.8</span>
+                                <span><i class="fas fa-map-marker-alt"></i> Singapore</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="destination-card" data-lat="13.7563" data-lng="100.5018">
+                        <div class="card-image">
+                            <img src="https://images.unsplash.com/photo-1508009603885-50cf7c079365?w=400&h=300&fit=crop" alt="Bangkok">
+                            <div class="card-overlay">
+                                <button class="btn-secondary">View Details</button>
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <h3>Bangkok</h3>
+                            <p>Grand Palace, Wat Phra Kaew, Chatuchak Market</p>
+                            <div class="card-meta">
+                                <span><i class="fas fa-star"></i> 4.5</span>
+                                <span><i class="fas fa-map-marker-alt"></i> Thailand</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Middle East Destinations -->
+            <div class="country-section">
+                <h3 class="country-title"><i class="fas fa-flag"></i> Middle East</h3>
+                <div class="destinations-grid">
+                    <div class="destination-card" data-lat="25.2048" data-lng="55.2708">
+                        <div class="card-image">
+                            <img src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=400&h=300&fit=crop" alt="Dubai">
+                            <div class="card-overlay">
+                                <button class="btn-secondary">View Details</button>
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <h3>Dubai</h3>
+                            <p>Burj Khalifa, Palm Jumeirah, Dubai Mall</p>
+                            <div class="card-meta">
+                                <span><i class="fas fa-star"></i> 4.5</span>
+                                <span><i class="fas fa-map-marker-alt"></i> UAE</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="destination-card" data-lat="21.4225" data-lng="39.8262">
+                        <div class="card-image">
+                            <img src="https://images.unsplash.com/photo-1542810634-71277d95dcbb?w=400&h=300&fit=crop" alt="Mecca">
+                            <div class="card-overlay">
+                                <button class="btn-secondary">View Details</button>
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <h3>Mecca</h3>
+                            <p>Kaaba, Masjid al-Haram, Mount Arafat</p>
+                            <div class="card-meta">
+                                <span><i class="fas fa-star"></i> 4.9</span>
+                                <span><i class="fas fa-map-marker-alt"></i> Saudi Arabia</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Oceania Destinations -->
+            <div class="country-section">
+                <h3 class="country-title"><i class="fas fa-flag"></i> Oceania</h3>
+                <div class="destinations-grid">
+                    <div class="destination-card" data-lat="-33.8688" data-lng="151.2093">
+                        <div class="card-image">
+                            <img src="https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?w=400&h=300&fit=crop" alt="Sydney">
+                            <div class="card-overlay">
+                                <button class="btn-secondary">View Details</button>
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <h3>Sydney</h3>
+                            <p>Sydney Opera House, Bondi Beach, Harbour Bridge</p>
+                            <div class="card-meta">
+                                <span><i class="fas fa-star"></i> 4.6</span>
+                                <span><i class="fas fa-map-marker-alt"></i> Australia</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="destination-card" data-lat="-37.8136" data-lng="144.9631">
+                        <div class="card-image">
+                            <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=300&fit=crop" alt="Melbourne">
+                            <div class="card-overlay">
+                                <button class="btn-secondary">View Details</button>
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <h3>Melbourne</h3>
+                            <p>Federation Square, Great Ocean Road, Yarra Valley</p>
+                            <div class="card-meta">
+                                <span><i class="fas fa-star"></i> 4.7</span>
+                                <span><i class="fas fa-map-marker-alt"></i> Australia</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="destination-card" data-lat="-36.8485" data-lng="174.7633">
+                        <div class="card-image">
+                            <img src="https://images.unsplash.com/photo-1507692049790-de58290a4334?w=400&h=300&fit=crop" alt="Auckland">
+                            <div class="card-overlay">
+                                <button class="btn-secondary">View Details</button>
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <h3>Auckland</h3>
+                            <p>Sky Tower, Waiheke Island, Waitakere Ranges</p>
+                            <div class="card-meta">
+                                <span><i class="fas fa-star"></i> 4.5</span>
+                                <span><i class="fas fa-map-marker-alt"></i> New Zealand</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>About Travellwuu</h2>
+                    <p>Travellwuu is your ultimate companion for exploring the world's most amazing destinations. We provide real-time information, interactive maps, and detailed guides to help you plan the perfect trip.</p>
+                    <div class="features">
+                        <div class="feature">
+                            <i class="fas fa-map-marked-alt"></i>
+                            <h3>Interactive Maps</h3>
+                            <p>Explore destinations with our detailed interactive maps</p>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-clock"></i>
+                            <h3>Real-time ETA</h3>
+                            <p>Get accurate arrival times and route information</p>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-mobile-alt"></i>
+                            <h3>Mobile Friendly</h3>
+                            <p>Perfect experience on all devices</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=500&h=400&fit=crop" alt="Travel">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Travellwuu</h3>
+                    <p>Your ultimate tourist guide for exploring the world's most beautiful destinations.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#destinations">Destinations</a></li>
+                        <li><a href="#map">Map</a></li>
+                        <li><a href="#about">About</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><i class="fas fa-envelope"></i> info@travellwuu.com</li>
+                        <li><i class="fas fa-phone"></i> +1 (555) 123-4567</li>
+                        <li><i class="fas fa-map-marker-alt"></i> 123 Travel St, World</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Travellwuu. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="script.js"></script>
+</body>
+</html> 

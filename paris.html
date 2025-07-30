@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paris - Travellwuu</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .destination-hero {
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
+                        url('https://images.unsplash.com/photo-1502602898534-47d1c0c0b131?w=1200&h=600&fit=crop');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 8rem 0 4rem;
+            text-align: center;
+        }
+        
+        .back-btn {
+            position: absolute;
+            top: 2rem;
+            left: 2rem;
+            background: rgba(255,255,255,0.9);
+            color: #333;
+            padding: 0.75rem 1.5rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .back-btn:hover {
+            background: white;
+            transform: translateY(-2px);
+        }
+        
+        .places-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .place-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .place-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .place-image {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .place-content {
+            padding: 1.5rem;
+        }
+        
+        .place-content h3 {
+            color: #1e293b;
+            margin-bottom: 0.5rem;
+        }
+        
+        .place-content p {
+            color: #64748b;
+            margin-bottom: 1rem;
+        }
+        
+        .place-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.9rem;
+        }
+        
+        .price {
+            color: #10b981;
+            font-weight: 600;
+        }
+        
+        .rating {
+            color: #fbbf24;
+        }
+        
+        .info-section {
+            background: #f8fafc;
+            padding: 3rem 0;
+        }
+        
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .info-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        
+        .info-card i {
+            font-size: 2.5rem;
+            color: #2563eb;
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="destination-hero">
+        <a href="../index.html" class="back-btn">
+            <i class="fas fa-arrow-left"></i> Back to Home
+        </a>
+        <div class="container">
+            <h1>Paris</h1>
+            <p>The city of love and lights</p>
+            <div class="hero-stats">
+                <div class="stat">
+                    <i class="fas fa-star"></i>
+                    <span>4.9 Rating</span>
+                </div>
+                <div class="stat">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>France</span>
+                </div>
+                <div class="stat">
+                    <i class="fas fa-users"></i>
+                    <span>2.1M Population</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="container" style="padding: 4rem 0;">
+        <h2>Must-Visit Places in Paris</h2>
+        <p>Discover the iconic landmarks and romantic charm of the City of Light</p>
+        
+        <div class="places-grid">
+            <div class="place-card">
+                <div class="place-image" style="background-image: url('https://images.unsplash.com/photo-1511739001486-6bfe10ce785f?w=400&h=300&fit=crop');"></div>
+                <div class="place-content">
+                    <h3>Eiffel Tower</h3>
+                    <p>Iconic iron lattice tower offering breathtaking views of Paris from its observation decks.</p>
+                    <div class="place-meta">
+                        <span class="price">€26</span>
+                        <span class="rating"><i class="fas fa-star"></i> 4.8</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="place-card">
+                <div class="place-image" style="background-image: url('https://images.unsplash.com/photo-1541961017774-22349e4a1262?w=400&h=300&fit=crop');"></div>
+                <div class="place-content">
+                    <h3>Louvre Museum</h3>
+                    <p>World's largest art museum, home to the Mona Lisa and thousands of masterpieces.</p>
+                    <div class="place-meta">
+                        <span class="price">€17</span>
+                        <span class="rating"><i class="fas fa-star"></i> 4.9</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="place-card">
+                <div class="place-image" style="background-image: url('https://images.unsplash.com/photo-1502602898534-47d1c0c0b131?w=400&h=300&fit=crop');"></div>
+                <div class="place-content">
+                    <h3>Notre-Dame Cathedral</h3>
+                    <p>Gothic masterpiece with stunning architecture, rose windows, and rich history.</p>
+                    <div class="place-meta">
+                        <span class="price">Free</span>
+                        <span class="rating"><i class="fas fa-star"></i> 4.7</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="place-card">
+                <div class="place-image" style="background-image: url('https://images.unsplash.com/photo-1499856871958-5b9627545d1a?w=400&h=300&fit=crop');"></div>
+                <div class="place-content">
+                    <h3>Arc de Triomphe</h3>
+                    <p>Monumental arch honoring those who fought for France, with panoramic city views.</p>
+                    <div class="place-meta">
+                        <span class="price">€13</span>
+                        <span class="rating"><i class="fas fa-star"></i> 4.6</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="place-card">
+                <div class="place-image" style="background-image: url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=300&fit=crop');"></div>
+                <div class="place-content">
+                    <h3>Champs-Élysées</h3>
+                    <p>Famous avenue lined with luxury shops, theaters, and cafes, perfect for strolling.</p>
+                    <div class="place-meta">
+                        <span class="price">Free</span>
+                        <span class="rating"><i class="fas fa-star"></i> 4.5</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="place-card">
+                <div class="place-image" style="background-image: url('https://images.unsplash.com/photo-1511739001486-6bfe10ce785f?w=400&h=300&fit=crop');"></div>
+                <div class="place-content">
+                    <h3>Montmartre</h3>
+                    <p>Artistic neighborhood with Sacré-Cœur Basilica, charming streets, and bohemian atmosphere.</p>
+                    <div class="place-meta">
+                        <span class="price">Free</span>
+                        <span class="rating"><i class="fas fa-star"></i> 4.8</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="place-card">
+                <div class="place-image" style="background-image: url('https://images.unsplash.com/photo-1541961017774-22349e4a1262?w=400&h=300&fit=crop');"></div>
+                <div class="place-content">
+                    <h3>Palace of Versailles</h3>
+                    <p>Opulent royal palace with magnificent gardens, Hall of Mirrors, and rich history.</p>
+                    <div class="place-meta">
+                        <span class="price">€20</span>
+                        <span class="rating"><i class="fas fa-star"></i> 4.9</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="place-card">
+                <div class="place-image" style="background-image: url('https://images.unsplash.com/photo-1499856871958-5b9627545d1a?w=400&h=300&fit=crop');"></div>
+                <div class="place-content">
+                    <h3>Seine River Cruise</h3>
+                    <p>Romantic boat tour along the Seine, offering unique perspectives of Paris landmarks.</p>
+                    <div class="place-meta">
+                        <span class="price">€15</span>
+                        <span class="rating"><i class="fas fa-star"></i> 4.7</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="info-section">
+        <div class="container">
+            <h2>Travel Information</h2>
+            <div class="info-grid">
+                <div class="info-card">
+                    <i class="fas fa-plane"></i>
+                    <h3>Best Time to Visit</h3>
+                    <p>Spring (April-June) and Fall (September-October) offer pleasant weather and fewer crowds.</p>
+                </div>
+                <div class="info-card">
+                    <i class="fas fa-subway"></i>
+                    <h3>Getting Around</h3>
+                    <p>Paris Metro is efficient and affordable. Single ticket costs €1.90, day pass €7.50.</p>
+                </div>
+                <div class="info-card">
+                    <i class="fas fa-bed"></i>
+                    <h3>Where to Stay</h3>
+                    <p>Le Marais for trendy vibe, Saint-Germain for luxury, Montmartre for charm, Latin Quarter for budget.</p>
+                </div>
+                <div class="info-card">
+                    <i class="fas fa-utensils"></i>
+                    <h3>Local Cuisine</h3>
+                    <p>Try croissants, escargot, coq au vin, French onion soup, and world-class pastries.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2024 Travellwuu. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html> 
